@@ -1,0 +1,23 @@
+import numpy as np
+import pandas as pd
+from google.colab import files
+import zipfile
+
+uploaded = files.upload()
+with zipfile.ZipFile(list(uploaded.keys())[0]) as z:
+    X = pd.read_csv(z.open("day38_matrices_X.csv")).values
+    W = pd.read_csv(z.open("day38_matrices_W.csv")).values
+
+print("X =\n", X)
+print("W =\n", W)
+print("\n1) Shapes:")
+print("   X shape:", X.shape)
+print("   W shape:", W.shape)
+
+Y = X @ W
+print("\n2) Y = X @ W =\n", Y)
+print("   Y shape:", Y.shape)
+
+print("\n3) Transpose:")
+print("   X.T shape:", X.T.shape)
+print("   Y.T shape:", Y.T.shape)lab 
